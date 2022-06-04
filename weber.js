@@ -175,3 +175,5 @@ class Obt {
         }
     }
 }
+
+export default Weber;
