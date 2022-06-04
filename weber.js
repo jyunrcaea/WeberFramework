@@ -1,12 +1,18 @@
-const Weber = {}
+const Weber = {
+    Canvas:null,
+    Renderer:null,
+    CenterWidth:0,
+    CenterHeight:0,
+    ObjectList:[]
+}
 
-Weber.Canvas = null;
-Weber.Renderer = null;
-Weber.CenterWidth = 0;
-Weber.CenterHeight = 0;
-Weber.ObjectList = [
+// Weber.Canvas = null;
+// Weber.Renderer = null;
+// Weber.CenterWidth = 0;
+// Weber.CenterHeight = 0;
+// Weber.ObjectList = [
     
-];
+// ];
 
 Weber.Error = function(text = "알수없는 오류") {
     console.error("Weber Error: " + text);
@@ -69,25 +75,25 @@ Weber.Render = function(obt = new Obt()) {
     //가로 위치
     switch (obt.px) {
         case 0:
-            x = center_width;
+            x = Weber.CenterWidth;
             break;
         case 2:
-            x = canvas.width;
+            x = Weber.Canvas.width;
             break;
     }
     //세로 위치
     switch (obt.py) {
         case 0:
-            y  = center_height;
+            y  = Weber.CenterHeight;
             break;
         case 2:
-            y = canvas.height;
+            y = Weber.Canvas.height;
             break;
     }
     switch(obt.type) {
         case 0:
-            if (w===null) w=canvas.width;
-            if (h===null) h=canvas.height;
+            if (w===null) w=Weber.Canvas.width;
+            if (h===null) h=Weber.Canvas.height;
             setting();
             Weber.Renderer.fillStyle = obt.resource;
             Weber.Renderer.fillRect(dx,dy,w,h);
@@ -107,7 +113,7 @@ Weber.Render = function(obt = new Obt()) {
 Weber.DrawManager = function() {
     Weber.Renderer.fill();
     for (var i=0;i<Weber.ObjectList.length;i++) {
-        render(Weber.ObjectList[i]);
+        Weber.Render(Weber.ObjectList[i]);
     }
 }
 
