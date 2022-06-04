@@ -52,14 +52,14 @@ Weber.Render = function(obt = new Obt()) {
     if (obt.hide) return;
     var x = 0, y = 0, w = obt.width,h = obt.height,dx=0,dy=0;
     function setting() {
-        if (obt.dpx == 1) {
+        if (obt.dpx == 0) {
             dx -= w/2;
-        } else if (obt.dpx == 0) {
+        } else if (obt.dpx == 2) {
             dx -= w;
         }
-        if (obt.dpy == 1) {
+        if (obt.dpy == 0) {
             dy -= h/2;
-        } else if (obt.dpy == 0) {
+        } else if (obt.dpy == 2) {
             dy -= h;
         }
         Weber.Renderer.save();
@@ -68,7 +68,7 @@ Weber.Render = function(obt = new Obt()) {
     }
     //가로 위치
     switch (obt.px) {
-        case 1:
+        case 0:
             x = center_width;
             break;
         case 2:
@@ -77,7 +77,7 @@ Weber.Render = function(obt = new Obt()) {
     }
     //세로 위치
     switch (obt.py) {
-        case 1:
+        case 0:
             y  = center_height;
             break;
         case 2:
